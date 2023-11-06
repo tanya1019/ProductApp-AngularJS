@@ -1,0 +1,36 @@
+<p>reactive works!</p>
+<div>
+ <h1>LoginForm :</h1>
+ <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+ 
+ userName:<input type="text" formControlName="userName" id="name" class="form-control" >
+ <div *ngIf="registerFormControl['userName'].invalid &&
+ (registerFormControl['userName'].dirty || registerFormControl['userName'].touched)"
+class="alert alert-danger">
+ <div *ngIf="registerFormControl['userName'].errors?.['required']">
+ Name is required
+ </div>
+ <div *ngIf="registerFormControl['userName'].errors?.['minlength']">
+ Name must be at least 4 characters long
+ </div>
+ 
+ </div>
+ password:<input type="password" formControlName="password" id="password" class="form-control" >
+ <div *ngIf="registerFormControl['password'].invalid &&
+ (registerFormControl['password'].dirty || registerFormControl['password'].touched)"
+class="alert alert-danger">
+ <div *ngIf="registerFormControl['password'].errors?.['required']">
+ Password is required
+ </div>
+ <div *ngIf="registerFormControl['password'].errors?.['pattern']">
+ min 8 char atleast 1 letter , 1 number and 1 spl char.
+ </div>
+ 
+ 
+ 
+</div>
+<div>
+ <input type="submit" (click)="onSubmit" class="btn btn-primary" >
+ </div>
+ 
+</form>
